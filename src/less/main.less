@@ -1,0 +1,65 @@
+/* global */
+@bg-color: #fff;
+@btn-bg: #936fd9;
+@btn-color: #fff;
+
+
+// global mixin
+.fs(@size) {
+    font-size: unit(@size, px);
+    font-size: unit(@size / 10, rem);
+}
+
+.animation(@prop) {
+    -webkit-animation: @prop;
+    animation: @prop;
+}
+
+.transition(@prop) {
+    -webkit-transition: @prop;
+    transition: @prop;
+}
+
+.transform(@prop) {
+    -webkit-transform: @prop;
+    transform: @prop;
+}
+
+.translate3d(@xx, @yy, @zz) {
+    .transform(translate3d(@xx, @yy, @zz));
+}
+
+//style begins
+html {
+    font-size: 62.5%;
+    width: 100%;
+    min-width: 300px;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: "Microsoft Yahei";
+    width: 100%;
+    height: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: inherit;
+    -webkit-font-smoothing: antialiased;
+    background: @bg-color;
+    overflow: hidden;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a{
+    font-family: "Microsoft Yahei";
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
