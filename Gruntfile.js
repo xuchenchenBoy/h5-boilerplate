@@ -1,8 +1,13 @@
 module.exports = function(grunt) {
-    var baseUrl = '',
-        ts = '20170308';
+
+    var baseUrl = '', // 资源文件URL的前缀
+
+        ts = '1489481733964'; // 资源文件的时间戳
+
     grunt.initConfig({
+
         pkg: grunt.file.readJSON('package.json'),
+
         jshint: {
             main_js: ['src/js/main.js'],
             grunt_js: ['Gruntfile.js'],
@@ -87,7 +92,7 @@ module.exports = function(grunt) {
             server: {
                 options: {
                     port: 8080,
-                    hostname: '192.168.1.103',
+                    hostname: 'localhost',
                     livereload: true,
                     keepalive:true
                 }
@@ -97,7 +102,7 @@ module.exports = function(grunt) {
         watch: {
             lessMoble: {
                 files: ['src/less/main.less'],
-                tasks: ['less:mobile'],
+                tasks: ['less:mobile']
             },
             css: {
                 files: ['src/css/*.css', 'build/css/*.css'],
@@ -106,7 +111,7 @@ module.exports = function(grunt) {
                 }
             },
             page: {
-                files: ['*.htm'],
+                files: ['*.html'],
                 options: {
                     livereload: true
                 }

@@ -1,5 +1,5 @@
-# query
-患者查单移动页
+# project
+project name
 
 #环境安装
     npm install -g grunt-cli && npm install 
@@ -12,7 +12,7 @@
     
 # 真机调试
     grunt test 
-设置配置文件里的connect>server>port && hostname即可
+设置配置文件里的 connect> server >port && hostname即可
 
 # 参考
 https://gruntjs.com/getting-started

@@ -1,7 +1,7 @@
 {
-  "name": "query",
+  "name": "project",
   "version": "0.0.1",
-  "author": "tangusoft",
+  "author": "xuchen@tangusoft.com",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-concat": "^0.5.1",
