@@ -1,7 +1,7 @@
 # project
 project name
 
-#环境安装
+# 环境安装
     npm install -g grunt-cli && npm install 
     
 # 启动
