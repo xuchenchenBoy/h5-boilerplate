@@ -4,6 +4,10 @@ module.exports = function(grunt) {
 
         ts = '1489481733964'; // 资源文件的时间戳
 
+    var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
+
+    var serveStatic = require('serve-static');
+
     grunt.initConfig({
 
         pkg: grunt.file.readJSON('package.json'),
@@ -92,10 +96,24 @@ module.exports = function(grunt) {
             server: {
                 options: {
                     port: 8080,
-                    hostname: 'localhost',
-                    livereload: true,
-                    keepalive:true
-                }
+                    hostname: '192.168.0.116',
+                    keepalive: true,
+                    open: {
+                        target: 'http://localhost:8080/index_test.html'
+                    },
+                    middleware: function (connect, options) {
+                        return [
+                            proxySnippet,
+                            serveStatic('./')
+                        ];
+                    }
+                },
+                proxies: [{
+                    context: '/pharmacy',
+                    host: '192.168.0.137',
+                    port: 8080,
+                    changeOrigin: true
+                }]
             }
         },
 
@@ -105,7 +123,7 @@ module.exports = function(grunt) {
                 tasks: ['less:mobile']
             },
             css: {
-                files: ['src/css/*.css', 'build/css/*.css'],
+                files: ['src/less/*.less', 'build/css/*.css'],
                 options: {
                     livereload: true
                 }
@@ -129,6 +147,8 @@ module.exports = function(grunt) {
             }
         }
     });
+
+    grunt.loadNpmTasks('grunt-connect-proxy');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
@@ -144,5 +164,6 @@ module.exports = function(grunt) {
     grunt.registerTask('style', ['less', 'replace', 'cssmin']);
     grunt.registerTask('refresh', ['processhtml']);
     grunt.registerTask('comp', ['uglify']);
-    grunt.registerTask('test', ['connect:server', 'watch']);
+    grunt.registerTask('test', [ 'configureProxies:server', 'connect:server', 'watch']);
+
 };
