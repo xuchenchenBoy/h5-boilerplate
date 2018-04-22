@@ -12,16 +12,23 @@ var MODULE = {
     },
 
     params: { 
-
+      pcMaskEl: '.J-pc-mask'
     },
-
+  
     class: {
-
+      showPcMask: 'show-pc-mask'
+    },
+  
+    init: function() {
+      this.compatiblePC();
     },
 
-    init: function(){
-
-    }
+    compatiblePC: function() {
+      // 非移动端设备
+      if(!navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+        $(this.nodes.pcMaskEl).addClass(this.class.showPcMask);
+      }
+    },
 };
 
 $(function(){

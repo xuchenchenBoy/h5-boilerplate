@@ -4,7 +4,7 @@
 @btn-color: #fff;
 
 
-// global mixin
+/* global mixin */
 .fs(@size) {
     font-size: unit(@size, px);
     font-size: unit(@size / 10, rem);
@@ -29,7 +29,7 @@
     .transform(translate3d(@xx, @yy, @zz));
 }
 
-//style begins
+/* style begins */
 html {
     width: 100%;
     height: 100%;
@@ -60,7 +60,7 @@ a{
 }
 
 
-.mask {
+.pc-mask {
     background: #b8d8e7;
     position: fixed;
     width: 100%;
@@ -74,7 +74,7 @@ a{
     visibility: hidden;
     pointer-events: none;
 
-    @media (orientation: landscape) {
+    &.pc-show-mask {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
