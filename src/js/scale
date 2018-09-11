@@ -1,0 +1,6 @@
+// 7.5 表示设备宽度为7.5rem。
+// 以 iphone6 为标准，布局视口为750像素，理想视口为375像素(css像素)， 
+// 那么 html 的 font-size 为 375 / 7.5 = 50px; 而设计稿是750px为准的，那么根据像素比为2来
+// 计算css像素，那么需要除以2，也就是50px。比如设计图200px的块，那么其代码中的大小为2rem;
+// 如果是i5，那么font-size为320 / 7.5, 那么2rem为等比大小。 以此类推其他设备
+document.documentElement.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
